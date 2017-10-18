@@ -9,6 +9,8 @@
 	window.console.log(returnTimeWithIntervals('09:30', 30));
 	window.console.log(checkIsToday('18-10-2017', 'DD-MM-YYYY'));
 
+	recursiveTimeGetter('13:00', '23:00', 15);
+
 })();
 
 function debug(everything) {
@@ -69,12 +71,13 @@ function checkIsToday($date, $format) {
 }
 
 /*
-want to build recursive functino that will call returnTimeWithIntervals
+recursive functino that returns time based on open and close
+returns time with given interval.
 until a conditional is met, returned time is === to close time
  */
-
-// function recursiveTimeGetter($openTime, $closeTime, $interval) {
-// 	while (returnTimeWithIntervals($openTime, $interval) < $closeTime ) {
-
-// 	}
-// }
+function recursiveTimeGetter($openTime, $closeTime, $interval) {
+	while (returnTimeWithIntervals($openTime, $interval) <= $closeTime ) {
+		$openTime = returnTimeWithIntervals($openTime, $interval);
+		window.console.log($openTime);
+	}
+}
