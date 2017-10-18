@@ -6,6 +6,7 @@
 	window.console.log(getTwoHoursFromNow());
 	window.console.log(getThirtyMinutesFromNow());
 	window.console.log(getTomorrow());
+	window.console.log(returnTimeWithIntervals('09:30', 30));
 
 })();
 
@@ -18,35 +19,36 @@ function checkCurrentTime() {
 }
 
 function getTwoHoursFromNow() {
-	var new_date = moment(moment().format("DD-MM-YYYY HH:mm:ss"), "DD-MM-YYYY HH:mm:ss").add(2, 'h');
+	var newDate = moment(moment().format("DD-MM-YYYY HH:mm:ss"), "DD-MM-YYYY HH:mm:ss").add(2, 'h');
 
-	var hour = new_date.format('HH');
-	var min = new_date.format('mm');
-	var day = new_date.format('DD');
-	var month = new_date.format('MM');
-	var year = new_date.format('YYYY');
-
-	return hour + ':' + min;
+	return newDate.format('HH') + ':' + newDate.format('mm');
 }
 
 function getThirtyMinutesFromNow() {
-	var new_date = moment(moment().format("DD-MM-YYYY HH:mm:ss"), "DD-MM-YYYY HH:mm:ss").add(30, 'm');
+	var newDate = moment(moment().format("DD-MM-YYYY HH:mm:ss"), "DD-MM-YYYY HH:mm:ss").add(30, 'm');
 
-	var hour = new_date.format('HH');
-	var min = new_date.format('mm');
-	var day = new_date.format('DD');
-	var month = new_date.format('MM');
-	var year = new_date.format('YYYY');
-
-	return hour + ':' + min;
+	return newDate.format('HH') + ':' + newDate.format('mm');
 }
 
 function getTomorrow() {
-	var new_date = moment(moment().format("DD-MM-YYYY"), "DD-MM-YYYY").add(1, 'days');
+	var newDate = moment(moment().format("DD-MM-YYYY"), "DD-MM-YYYY").add(1, 'days');
 
-	var day = new_date.format('DD');
-	var month = new_date.format('MM');
-	var year = new_date.format('YYYY');
-
-	return day + ':' + month + ':' + year;
+	return newDate.format('DD') + ':' + newDate.format('MM') + ':' + newDate.format('YYYY');
 }
+
+function returnTimeWithIntervals($startTime, $interval) {
+	var $returnTime = moment($startTime, 'HH:mm').add($interval, 'm');
+
+	return $returnTime.format('HH') + ':' + $returnTime.format('mm');
+}
+
+/*
+want to build recursive functino that will call returnTimeWithIntervals
+until a conditional is met, returned time is === to close time
+ */
+
+// function recursiveTimeGetter($openTime, $closeTime, $interval) {
+// 	while (returnTimeWithIntervals($openTime, $interval) < $closeTime ) {
+
+// 	}
+// }
