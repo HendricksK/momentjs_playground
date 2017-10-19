@@ -3,10 +3,10 @@
 	debug('wait a minute');
 
 	// window.console.log(getCurrentTime());
-	// window.console.log(getTwoHoursFromNow());
-	// window.console.log(getThirtyMinutesFromNow());
-	// window.console.log(getTomorrow('DD-MM-YYYY'));
-	// window.console.log(returnTimeWithIntervals('09:30', 30));
+	window.console.log(getTwoHoursFromNow());
+	window.console.log(getThirtyMinutesFromNow());
+	window.console.log(getTomorrow('DD-MM-YYYY'));
+	window.console.log(returnTimeWithIntervals('09:30', 30));
 	// window.console.log(checkIsToday('18-10-2017', 'DD-MM-YYYY'));
 	window.console.log(returnDateDifferenceAsDays('18-10-2017 10:45','20-10-2017 11:00'));
 	// recursiveTimeGetter('13:00', '23:00', 15);
@@ -29,7 +29,7 @@ returns current time, plus two hours
 */
 function getTwoHoursFromNow() {
 	var newDate = moment(moment().format("DD-MM-YYYY HH:mm:ss"), "DD-MM-YYYY HH:mm:ss").add(2, 'h');
-	return newDate.format('HH') + ':' + newDate.format('mm');
+	return newDate.format("HH:mm");
 }
 
 /*
@@ -37,7 +37,7 @@ returns current time, plus thirty minutes
 */
 function getThirtyMinutesFromNow() {
 	var newDate = moment(moment().format("DD-MM-YYYY HH:mm:ss"), "DD-MM-YYYY HH:mm:ss").add(30, 'm');
-	return newDate.format('HH') + ':' + newDate.format('mm');
+	return newDate.format("HH:mm");
 }
 
 /*
@@ -46,7 +46,7 @@ returns tomorrow
 */
 function getTomorrow(format) {
 	var newDate = moment(moment().format(format), format).add(1, 'days');
-	return newDate.format('DD') + '-' + newDate.format('MM') + '-' + newDate.format('YYYY');
+	return newDate.format(format);
 }
 
 /*
@@ -56,7 +56,7 @@ returns boolean value
 */
 function returnTimeWithIntervals(startTime, interval) {
 	var returnTime = moment(startTime, 'HH:mm').add(interval, 'm');
-	return returnTime.format('HH') + ':' + returnTime.format('mm');
+	return returnTime.format("HH:mm");
 }
 
 /*
